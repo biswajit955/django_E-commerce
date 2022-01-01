@@ -1,0 +1,24 @@
+{% extends "product/base.html" %} 
+{% block title %} Home {% endblock %}
+	{% block content %}
+    {% if submitbutton == 'Search' and request.GET.a != '' %}
+        {% if results %}
+            <h3>Results for <b>{{ request.GET.a }}</b></h3>
+            <br/><br/>
+
+            {% for result in results %}
+            {% for category in categorys %}
+				<a href="/?categoryid={{category.id}}" class="list-group-item list-group-item-action category_index">{{result.name}}</a>
+				<span class="list-group-item list-group-item-action"></span>
+				{% endfor %}
+            <br/>
+
+          
+            <br/>
+            {% endfor %}
+        {% endif %}
+        {% else %}
+        {{none}}
+    {% endif %}
+
+    {% endblock content %}

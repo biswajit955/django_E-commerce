@@ -1,0 +1,25 @@
+# env #
+.env
+env
+env/*
+
+# Django #
+*.log
+*.pot
+*.pyc
+__pycache__
+db.sqlite3
+media
+
+# Visual Studio Code # 
+.vscode
+.vscode/* 
+!.vscode/settings.json 
+!.vscode/tasks.json 
+!.vscode/launch.json 
+!.vscode/extensions.json 
+.history
+
+# pytest #
+.pytest_cache/*
+pytest.ini

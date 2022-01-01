@@ -1,0 +1,102 @@
+{% extends "product/base.html" %} 
+{% block title %} Home {% endblock %}
+	{% block content %}
+    {% load static %}
+	{% load cart %}
+
+<section class="h-100 gradient-custom">
+  <div class="container py-5 h-100 ">
+    <div class="row d-flex justify-content-center align-items-center h-100" >
+      <div class="" >
+        <div class="card" style="border-radius: 10px;" >
+          <div class="card-header px-4 py-4">
+            <h5 class="text-center mb-0 ">Thanks for your Order, <span style="color: #a8729a;">{{customer}}</span>!</h5>
+          </div>
+          <div class="card-body p-4">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+              <p class="lead fw-normal mb-0" style="color: #a8729a;">Receipt</p>
+              <p class="small text-muted mb-0">Receipt Voucher : 1KAU9-84UIL</p>
+            </div>
+            <!-- List group -->
+           
+            
+             {% for order in order %}
+            <div class="card shadow-0 border mb-4">
+            <div class="list-group" id="myList" role="tablist">
+              <div class="list-group-item list-group-item-action " style="background-color: #a8729a;" data-toggle="list" href="#home" role="tab">
+              <span class="ms-5 h4 text-white">Image</span> 
+              <span class="h4 text-white" style="padding-left:90px;">Product Name</span> 
+              <span class="h4 text-white" style="padding-left:80px;">Address</span>
+              <span class="h4 text-white" style="padding-left:115px;">Date</span>
+              <span class="h4 text-white" style="padding-left:140px;">Quantity</span>
+              <span class="h4 text-white" style="padding-left:135px;">Price</span>
+              </div>
+            </div>
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-md-2">
+                    <img  src="{{order.product.image.url}}" class="img-fluid" alt="Phone">
+                  </div>
+                  <div class="col-md-2 text-center d-flex  align-items-center">
+                    <h5 class="text-muted mb-0 fw-bold">{{order.product.name}}</h5>
+                  </div>
+                  <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
+                    <h5 class="text-muted mb-0 fw-bold">{{order.address}}</h5>
+                  </div>
+                  <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
+                    <h5 class="text-muted mb-0 fw-bold">{{order.date}}</h5>
+                  </div>
+                  <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
+                    <h5 class="text-muted mb-0 fw-bold">{{order.quantity}}<h5>
+                  </div>
+                  <div class="col-md-2 text-center d-flex justify-content-center align-items-center" style="padding-right:0px; ">
+                    <h5 class="text-muted mb-0 fw-bold">{{order.price}}</h5>
+                  </div>
+                  
+                </div>
+                 
+                      {% comment %} -----------Track Order------------ {% endcomment %}
+                 <hr class="mb-4" style="background-color: #e0e0e0; opacity: 1;">
+                <div class="row d-flex align-items-center " style="">
+                  <div class="col-md-2">
+                    <p class="text-muted mb-0 fw-bold">Track Order </p>
+                  </div>
+                  <div class="col-md-10 ">
+                    <div class="progress " style="height: 10px;  border-radius: 30px;">
+                      <div
+                        class="progress-bar"
+                        role="progressbar"
+                        style="width: 
+                        {% if order.status == 'P'%}
+                        13%
+                        {% elif order.status == 'OFD'%}
+                        53%
+                        {% else %}
+                        100%
+                        {% endif %}
+                        ; border-radius: 16px; background-color: #a8729a;"
+                        aria-valuenow="20"
+                        aria-valuemin="0"
+                        aria-valuemax="100"
+                      ></div>
+                    </div>
+                    <div class="d-flex justify-content-around mb-1">
+                    
+                      <p class="text-muted mt-1 mb-0 small ms-xl-5 ps-5 text-primary">Padding</p>
+                      <p class="text-muted mt-1 mb-0 small ms-xl-5 " style="padding-left:280px">Out for delivary</p>
+                      <p class="text-muted mt-1 small ms-xl-5 " style="padding-left:300px" >Delivered</p>
+                    </div>
+                  </div>
+                </div>
+                </div>
+              </div>
+              {% endfor%}
+            </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+   {% endblock content %}

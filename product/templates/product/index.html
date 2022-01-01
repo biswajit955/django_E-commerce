@@ -1,0 +1,99 @@
+{% extends "product/base.html" %} 
+{% block title %} Home {% endblock %}
+	{% block content %}
+	{% load cart %}
+	{% if not request.session.customer %}
+	<div class="alert alert-danger text-dark" role="alert">
+		You are logout, you need to login <a class=" text-primary" href="{% url 'login' %}" > login </a>
+	</div>
+	{% endif %}
+
+	
+<div class="container-fluid mt-3">
+	<div class="row">
+
+
+		{% comment %} <!-- category --> {% endcomment %}
+
+		<div class="col-lg-3 mx-auto  ">
+			<div class="list-group rounded-top  shadow-3-strong">
+				<span  class="list-group-item list-group-item-action text-center text-white hover-zoom" style="background-color: #a8729a;">Filter By</span>
+				<span class="list-group-item list-group-item-action"></span>
+				<a href="/" class="list-group-item list-group-item-action shadow-5 category_index text-center">All</a>
+				<span class="list-group-item list-group-item-action"></span>
+				{% for category in categorys %}
+				<a href="/?categoryid={{category.id}}" class=" shadow-5  list-group-item list-group-item-action category_index text-center">{{ category.name }}</a>
+				<span class="list-group-item list-group-item-action"></span>
+				{% endfor %}
+			</div>
+		</div>
+
+		{% comment %} <!-- all products --> {% endcomment %}
+		<div  id='products' class="col-lg-9 mx-auto ">
+			<div class="row mx-auto shadow-2-strong rounded  ">
+				<p  class="list-group-item list-group-item-action text-center  text-white" style="background-color: #a8729a;">Product</p>
+				{% for product in products %}
+				<div class="carousel slide card mx-auto mb-2 index_border  hover-zoom shadow p-3 mb-5 bg-body rounded " id="{{product.id}}" style="width: 18rem;">
+					<img class=" index_cart_img bg-image hover-overlay ripple " src="{{product.image.url}}" alt="Card image cap">
+	     			<div class="card-body">
+						<p class="card-title">{{product.name}}</p>
+						<p class="card-text"><b>₹ {{product.price}}</b></p>
+						
+
+						{% comment %} {{product.id | product_in_cart:request.session.cart}}
+ {% endcomment %}
+						<div class="card-footer p-0 ">
+
+							{% if product|product_in_cart:request.session.cart and product|product_quantity:request.session.cart != 0 %}
+								{% comment %} {% if  %} {% endcomment %}
+									<div class="row no-gutters p-0 me-3">
+										<form action="/#{{product.id}}" class="col-2 " method="post">
+											{% csrf_token %}
+											<input hidden type="text" name='product' value='{{product.id}}'>
+											<input hidden type="text" name='remove' value='True'>
+											<input type="submit" value=" - " class="btn border-right " value="Add To Cart" style="background-color: #a8729a; color:#ffffff">
+										</form>
+
+										<div class="text-center col ">{{product|product_quantity:request.session.cart}} in Cart</div>
+
+										<form action="/#{{product.id}}" class="col-2 " method="post">
+											{% csrf_token %}
+											<input hidden type="text" name='product' value='{{product.id}}'>
+											<input hidden type="text" name='add' value='True'>
+											<input type="submit" value=" + " class="btn me-1 border-left" style="background-color: #a8729a; color:#ffffff">
+										</form>	
+									</div>
+								{% else %}
+
+							 <form action="/#{{product.id}}" method="POST" class="btn-block">
+								{% csrf_token %}
+								<input hidden type="text" name='product' value='{{product.id}}'>
+								<input type="submit" class="float-right btn form-control " style="background-color: #a8729a; color:#ffffff"
+									value="Add To Cart" >
+							</form> 
+								{% endif %}
+							{% comment %} {% endif %} {% endcomment %}
+							
+
+						</div>
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+</div>
+
+<div
+  class="bg-image hover-overlay ripple shadow-1-strong rounded"
+  data-mdb-ripple-color="light">
+  <a href="#!"<img src="https://mdbcdn.b-cdn.net/img/new/fluid/city/113.webp" class="w-100" alt="Louvre" />
+    <div class="mask" style="background-color: rgba(251, 251, 251, 0.2)"></div>
+  </a>
+</div>
+{% for hi in hi %}
+{{ hi.price }}
+<br>
+{% endfor %}
+
+{% endblock content %}
