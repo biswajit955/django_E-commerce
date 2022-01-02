@@ -4,6 +4,13 @@
 [![license](https://img.shields.io/github/license/DAVFoundation/captain-n3m0.svg?style=flat-square)](https://github.com/biswajit955/django-E-commerce/blob/main/LIENSE.txt)
 # Django E-commerce
 Django-ecommerce is an open-source ecommerce platform built on the Django Web Framework.
+# Demo
+## Homepage
+![](Demo/home.png)
+## Cartpage
+![](Demo/cart.png)
+## Orderpage
+![](Demo/order.png)
 ## Features Included
 - Search Functionality
 - Shopping Cart
