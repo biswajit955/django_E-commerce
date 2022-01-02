@@ -17,13 +17,12 @@ Django-ecommerce is an open-source ecommerce platform built on the Django Web Fr
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ### Built With
-
-* [Python](https://www.python.org/)
-* [Django](https://docs.djangoproject.com/en/4.0/)
-* [Html](https://html.com/)
-* [Css](https://developer.mozilla.org/en-US/docs/Web/CSS)
-* [MySql](https://www.mysql.com/)
-* [Bootstrap](https://getbootstrap.com)
+<img alt="Django Logo" src="https://static.djangoproject.com/img/logos/django-logo-positive.png" width="100px" /> 
+<img  alt="python Logo" src="https://www.python.org/static/community_logos/python-logo-master-v3-TM-flattened.png" width="100px" />
+<img  alt="bootstrap Logo" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhOTYxmJtA-EDGB79XTUwfVbl9wvtf71PMSw&usqp=CAU" width="100px" />
+<img  alt="html Logo" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR10vZo3toTsho4-pJ2ThB5746-1DojPkaYAQ&usqp=CAU" width="100px" />
+<img  alt="css Logo" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2B0jgb556iB3bft4AYqEReM2wopQYyxYWmQ&usqp=CAU" width="100px" />
+<img  alt="mysql Logo" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTO5g2c4jc004DkuwHCRwA3RvXOy7WHVX0P8Q&usqp=CAU" width="100px" />
 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
