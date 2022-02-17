@@ -1,1 +1,1 @@
-web: gunicorn django_E-commerce.wsgi --log-file -
+web: gunicorn E_shop_django.wsgi --log-file -
