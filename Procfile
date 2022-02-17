@@ -1,1 +1,1 @@
-web: gunicorn biswashop.wsgi --log-file -
+web: gunicorn django_E-commerce.wsgi --log-file -
