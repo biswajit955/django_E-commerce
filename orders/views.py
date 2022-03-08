@@ -48,8 +48,9 @@ def my_orders(request):
     customer_id = request.session.get('customer')
     customer=Customer.objects.get(id=customer_id)
     orders = Order.objects.filter(customer=customer_id)
+
     data = {
         'order': orders,
-        'customer':customer
+        'customer':customer,
     }
     return render(request, 'orders.html', data)

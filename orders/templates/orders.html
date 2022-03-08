@@ -1,8 +1,8 @@
 {% extends "product/base.html" %} 
 {% block title %} Home {% endblock %}
-	{% block content %}
-    {% load static %}
-	{% load cart %}
+{% block content %}
+{% load static %}
+{% load total %}
 
 <section class="h-100 gradient-custom">
   <div class="container py-5 h-100 ">
@@ -50,7 +50,7 @@
                     <h5 class="text-muted mb-0 fw-bold">{{order.quantity}}<h5>
                   </div>
                   <div class="col-md-2 text-center d-flex justify-content-center align-items-center" style="padding-right:0px; ">
-                    <h5 class="text-muted mb-0 fw-bold">{{order.price}}</h5>
+                    <h5 class="text-muted mb-0 fw-bold">{{order.quantity|total:order.price}}</h5>
                   </div>
                   
                 </div>
