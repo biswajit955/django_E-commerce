@@ -134,6 +134,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+STATICFILES_STORAGE =  'django.contrib.staticfiles.storage.StaticFilesStorage'
+
 MEDIA_URL = '/uploads/'
 MEDIA_ROOT = os.path.join(BASE_DIR,'uploads')
 
@@ -149,5 +151,3 @@ LOGOUT_REDIRECT_URL = 'login'
 
 SOCIAL_AUTH_FACEBOOK_KEY = '334782461456758'
 SOCIAL_AUTH_FACEBOOK_SECRET = 'd14463b306168e064ab78cf9bf419da4'
-
-
