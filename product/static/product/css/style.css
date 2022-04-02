@@ -1,15 +1,12 @@
-body {
-    background-color: #FFFFFF;
+.main {
+    background-color: #fd1e1e;
 }
 
 .index_logo {
     border-radius: 60%;
 }
 
-.index_cart_img {
-    width: 250px;
-    height: 300px;
-}
+
 
 .category_index {
     color: brown;
