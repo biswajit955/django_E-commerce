@@ -1,0 +1,133 @@
+{% extends "product/base.html" %}
+{% load static %}
+{% load cart %}
+{% block extrahead %}
+<link rel="stylesheet" href="{% static 'product/css/product_details.css' %}">
+{% endblock %}
+{% block content %}
+        <div class="card ">
+            <div class="container-fliud">
+                <div class="wrapper row">
+                    <div class="preview col-md-6">
+                        <div class="preview-pic tab-content">
+                            <div class="tab-pane active" id="pic-1">
+                                <img src="{{ product.image.url }}" />
+                            </div>
+                            {% if product.image2 %}
+                            <div class="tab-pane" id="pic-2">
+                                <img src="{{ product.image2.url }}" />
+                            </div>
+                            {% endif %}
+                            {% if product.image3 %}
+                            <div class="tab-pane" id="pic-3">
+                                <img src="{{ product.image3.url }}" />
+                            </div>
+                            {% endif %}
+                        </div>
+                        <ul class="preview-thumbnail nav nav-tabs">
+                            <li class="active">
+                                <a data-target="#pic-1" data-toggle="tab">
+                                    <img src="{{ product.image.url }}" />
+                                </a>
+                            </li>
+                            {% if product.image2 %}
+                            <li>
+                                <a data-target="#pic-2" data-toggle="tab">
+                                    <img src="{{ product.image2.url }}" />
+                                </a>
+                            </li>
+                            {% endif %}
+                            {% if product.image3 %}
+                            <li>
+                                <a data-target="#pic-3" data-toggle="tab">
+                                    <img src="{{ product.image3.url }}" />
+                                </a>
+                            </li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                    <div class="details col-md-6">
+                        <h3 class="product-title">{{ product.name }}</h3>
+                        <div class="rating">
+                            <div class="stars">
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star"></span>
+                                <span class="fa fa-star"></span>
+                            </div>
+                            <span class="review-no">41 reviews</span>
+                        </div>
+                        <p class="product-description">
+                            {{ product.description }}
+                        </p>
+                        <h4 class="price">
+                            current price: <span>₹{{ product.price }}</span>
+                        </h4>
+                        <p class="vote">
+                            <strong>91%</strong> of buyers enjoyed this product! <strong>(87 votes)</strong>
+                        </p>
+                        {% comment %} <h5 class="sizes">
+                            sizes:
+                            <span class="size" data-toggle="tooltip" title="small">s</span>
+                            <span class="size" data-toggle="tooltip" title="medium">m</span>
+                            <span class="size" data-toggle="tooltip" title="large">l</span>
+                            <span class="size" data-toggle="tooltip" title="xtra large">xl</span>
+                        </h5>
+                        <h5 class="colors">
+                            colors:
+                            <span class="color orange not-available"
+                                  data-toggle="tooltip"
+                                  title="Not In store"></span>
+                            <span class="color green"></span>
+                            <span class="color blue"></span>
+                        </h5> {% endcomment %}
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <button class="add-to-cart btn btn-default-dark" type="button">
+                            {% if product|product_in_cart:request.session.cart and product|product_quantity:request.session.cart != 0 %}
+                                <div class="row no-gutters p-0 me-3">
+                                    <form action="" class="col-2 " method="post">
+                                        {% csrf_token %}
+                                        <input hidden type="text" name='product' value='{{ product.id }}'>
+                                        <input hidden type="text" name='remove' value='True'>
+                                        <input type="submit"
+                                               value=" - "
+                                               class="btn border-right "
+                                               value="Add To Cart"
+                                               style="background-color: #a8729a; color:#ffffff">
+                                    </form>
+                                    <div class="text-center col fw-bold">{{ product|product_quantity:request.session.cart }} in Cart</div>
+                                    <form action="" class="col-2 " method="post">
+                                        {% csrf_token %}
+                                        <input hidden type="text" name='product' value='{{ product.id }}'>
+                                        <input hidden type="text" name='add' value='True'>
+                                        <input type="submit"
+                                               value=" + "
+                                               class="btn me-1 border-left"
+                                               style="background-color: #a8729a; color:#ffffff">
+                                    </form>
+                                </div>
+                            {% else %}
+                                <form action="" method="POST" class="btn-block">
+                                    {% csrf_token %}
+                                    <input hidden type="text" name='product' value='{{ product.id }}'>
+                                    <input type="submit"
+                                           class="float-right btn form-control "
+                                           style="background-color: #a8729a; color:#ffffff"
+                                           value="Add To Cart">
+                                </form>
+                            {% endif %}
+                        </button>
+                        <br>
+                        <br>
+                        <button class="like btn btn-default" type="button">
+                            <span class="fa fa-heart"></span>
+                        </button>  
+                    </div>
+                </div>
+            </div>
+        </div>
+{% endblock content %}

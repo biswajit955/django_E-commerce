@@ -1,24 +1,49 @@
-{% extends "product/base.html" %} 
-{% block title %} Home {% endblock %}
-	{% block content %}
+{% extends "product/base.html" %}
+{% block title %}Home{% endblock %}
+{% block content %}
+    {% load cart %}
     {% if submitbutton == 'Search' and request.GET.a != '' %}
         {% if results %}
-            <h3>Results for <b>{{ request.GET.a }}</b></h3>
-            <br/><br/>
-
-            {% for result in results %}
-            {% for category in categorys %}
-				<a href="/?categoryid={{category.id}}" class="list-group-item list-group-item-action category_index">{{result.name}}</a>
-				<span class="list-group-item list-group-item-action"></span>
-				{% endfor %}
-            <br/>
-
-          
-            <br/>
-            {% endfor %}
+            <h3>
+                Results for <b>{{ request.GET.a }}</b>
+            </h3>
+            <br />
+            <br />
+            <div id='products' class="mx-auto ">
+                <div class="row mx-auto shadow-2-strong rounded  ">
+                    <div class="cart">
+                        {% for result in results %}
+                            <div class="carousel slide card mx-auto mb-2 index_border  hover-zoom shadow p-3 mb-5 bg-body rounded "
+                                 id="{{ result.id }}"
+                                 style="width: 18rem;">
+                                <img class=" index_cart_img bg-image hover-overlay ripple "
+                                     src="{{ result.image.url }}"
+                                     alt="Card image cap">
+                                <div class="card-body">
+                                    <p class="card-title">
+                                        {{ result.name }}
+                                    </p>
+                                    <p class="card-text">
+                                        <b>₹ {{ result.price }}</b>
+                                    </p>
+                                </div>
+                                <a href="{% url 'product_details' result.id %}"
+                                   class="card-footer ms-3 btn btn-outline text-decoration-none fw-bold"
+                                   style="width: 225px;
+                                          padding: 5px;
+                                          color: #a8729a;">
+                                    buy now
+                                </a>
+                            </div>
+                            
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <br />
+            <br />
         {% endif %}
-        {% else %}
-        {{none}}
+    {% else %}
+        {{ none }}
     {% endif %}
-
-    {% endblock content %}
+{% endblock content %}
