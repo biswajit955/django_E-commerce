@@ -21,11 +21,11 @@ def add_cart(request,productid,remove,add):
                 cart[productid] = quntety+1
         else:
             # normal return
-            cart[productid] = 1
+            cart[productid] = 0
     # if "cart" is empty than it's set null value("{}") and add 1 qunatity
     else:
         cart = {}
-        cart[productid] = 1
+        cart[productid] = 0
     # all product and quantity add in cart distnairy
     request.session['cart'] = cart
     # if atomaticly create "null" key in cart than it's for delete "null" key from cart distnairy
